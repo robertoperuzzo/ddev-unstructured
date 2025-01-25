@@ -1,0 +1,18 @@
+#ddev-generated
+# Install the unstructured.io API service.
+# https://docs.unstructured.io/open-source/installation/docker-installation
+services:
+  unstructured:
+    container_name: ddev-${DDEV_SITENAME}-unstructured
+    image: downloads.unstructured.io/unstructured-io/unstructured:latest
+    restart: "on-failure"
+    expose:
+      - "8000"
+    stdin_open: true
+    tty: true
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=8000:8000
