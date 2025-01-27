@@ -1,6 +1,6 @@
 #ddev-generated
 # Install the unstructured.io API service.
-# https://docs.unstructured.io/open-source/installation/docker-installation
+# https://github.com/Unstructured-IO/unstructured-api
 services:
   unstructured:
     container_name: ddev-${DDEV_SITENAME}-unstructured
