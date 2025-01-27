@@ -4,15 +4,23 @@
 services:
   unstructured:
     container_name: ddev-${DDEV_SITENAME}-unstructured
-    image: downloads.unstructured.io/unstructured-io/unstructured:latest
+    # The official unstructured.io API service is available as a Docker image only for Linux/amd64.
+    # If you are using Silicon Mac platform, you may use https://hub.docker.com/r/robwilkes/unstructured-api.
+    platform: linux/amd64
+    image: downloads.unstructured.io/unstructured-io/unstructured-api:latest
     restart: "on-failure"
     expose:
       - "8000"
-    stdin_open: true
-    tty: true
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8000:8000
+    command: ["make", "run-web-app", "--port", "8000"]
+  # This links the Unstructured API service to the web service defined in the main
+  # docker-compose.yml, allowing applications running inside the web container to
+  # access the Unstructured API service at http://unstructured:8000.
+  web:
+    links:
+      - unstructured:unstructured

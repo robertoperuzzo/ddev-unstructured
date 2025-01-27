@@ -13,7 +13,7 @@ setup() {
 
 health_checks() {
   # Tests the service is available.
-  # ddev exec "curl -s https://localhost:8000/"
+  ddev exec "curl -s unstructured:8000/ | grep detail"
 }
 
 teardown() {

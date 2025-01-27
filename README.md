@@ -10,6 +10,9 @@
 
 This add-on quickly enable the [Unstructured.io](https://unstructured.io/) service into a [DDEV](https://ddev.readthedocs.io) project.
 
+Just a heads-up—there isn't an Unstructured API image build for Silicon Macs (arm64) yet. 
+Instead, we’re using the build for Linux/amd64. For more details, check out issue [#480](https://github.com/Unstructured-IO/unstructured-api/issues/480).
+
 ## Getting started
 
 Install the add-on with `ddev add-on get robertoperuzzo/ddev-unstructured`.
