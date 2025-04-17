@@ -17,7 +17,7 @@ services:
     environment:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8000:8000
-    command: ["make", "run-web-app", "--port", "8000"]
+    command: ["make", "docker-start-api"]
   # This links the Unstructured API service to the web service defined in the main
   # docker-compose.yml, allowing applications running inside the web container to
   # access the Unstructured API service at http://unstructured:8000.
